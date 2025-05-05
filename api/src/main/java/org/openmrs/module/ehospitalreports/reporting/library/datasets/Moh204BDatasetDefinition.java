@@ -95,7 +95,7 @@ public class Moh204BDatasetDefinition extends eHospitalBaseDataSet {
 		dsd.addColumn("OPD No.", identifierDef, (String) null);
 		dsd.addColumn("Revisit", getRevisit(), (String) null);
 		dsd.addColumn("Name", nameDef, "");
-		dsd.addColumn("Age", new AgeDataDefinition(), "", null);
+		dsd.addColumn("Age", new CustomAgeDataDefinition(), "", null);
 		dsd.addColumn("Gender", new GenderDataDefinition(), "", null);
 		dsd.addColumn("Ward", personWardAddress(), "", new CalculationResultConverter());
 		dsd.addColumn("Telephone", new PersonAttributeDataDefinition("Phone Number", phoneNumber), "",
