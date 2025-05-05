@@ -28,13 +28,13 @@ public class DiagnosisDataEvaluator implements PersonDataEvaluator {
 		EvaluatedPersonData c = new EvaluatedPersonData(definition, context);
 		
 		String qry = "SELECT client_id, " + "CASE "
-		        + "    WHEN MID(MAX(CONCAT(encounter_datetime, impression_diagnosis)), 20) = 'Other' THEN "
+		        + "    WHEN MID(MAX(CONCAT(encounter_datetime, impression_diagnosis)), 20) = 'Other Diseases' THEN "
 		        + "        MID(MAX(CONCAT(encounter_datetime, other_diagnosis_specify)), 20) " + "    ELSE "
 		        + "        MID(MAX(CONCAT(encounter_datetime, impression_diagnosis)), 20) " + "END AS diagnosis "
 		        + "FROM ehospital_etl.ehospital_flat_encounter_findings_and_treatment_report "
 		        + "WHERE date(encounter_datetime) <= date(:endDate) " + "GROUP BY client_id "
 		        + "HAVING diagnosis IS NOT NULL " + "UNION " + "SELECT client_id, " + "CASE "
-		        + "    WHEN MID(MAX(CONCAT(encounter_datetime, impression_diagnosis)), 20) = 'Other' THEN "
+		        + "    WHEN MID(MAX(CONCAT(encounter_datetime, impression_diagnosis)), 20) = 'Other Diseases' THEN "
 		        + "        MID(MAX(CONCAT(encounter_datetime, other_diagnosis_specify)), 20) " + "    ELSE "
 		        + "        MID(MAX(CONCAT(encounter_datetime, impression_diagnosis)), 20) " + "END AS diagnosis "
 		        + "FROM ehospital_etl.ehospital_flat_encounter_dental_report "
