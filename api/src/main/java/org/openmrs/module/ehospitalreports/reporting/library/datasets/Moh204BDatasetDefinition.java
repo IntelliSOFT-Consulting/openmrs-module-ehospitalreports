@@ -89,11 +89,15 @@ public class Moh204BDatasetDefinition extends eHospitalBaseDataSet {
 		ReferredToDataDefinition referredToDataDefinition = new ReferredToDataDefinition();
 		referredToDataDefinition.addParameter(new Parameter("endDate", "End Date", Date.class));
 		
+		CalculationDataDefinition opdRevisitDef = new CalculationDataDefinition("Revisit Check",
+		        new RevisitPatientCalculation());
+		opdRevisitDef.addParameter(new Parameter("endDate", "End Date", Date.class));
+		
 		dsd.addColumn("id", new PatientIdDataDefinition(), "");
 		dsd.addColumn("Date", CommonDatasetDefinition.getEncounterDate(),
 		    "onOrAfter=${startDate},onOrBefore=${endDate+23h}", new EncounterDateConverter());
 		dsd.addColumn("OPD No.", identifierDef, (String) null);
-		dsd.addColumn("Revisit", getRevisit(), (String) null);
+		dsd.addColumn("Revisit", opdRevisitDef, (String) null);
 		dsd.addColumn("Name", nameDef, "");
 		dsd.addColumn("Age", new CustomAgeDataDefinition(), "", null);
 		dsd.addColumn("Gender", new GenderDataDefinition(), "", null);
@@ -113,12 +117,6 @@ public class Moh204BDatasetDefinition extends eHospitalBaseDataSet {
 		dsd.addColumn("Referred To", referredToDataDefinition, "endDate=${endDate}");
 		
 		return dsd;
-	}
-	
-	private DataDefinition getRevisit() {
-		CalculationDataDefinition cd = new CalculationDataDefinition("OPD Revisit", new RevisitPatientCalculation());
-		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
-		return new ConvertedPatientDataDefinition(cd, new BooleanToYesNoConverter());
 	}
 	
 }
