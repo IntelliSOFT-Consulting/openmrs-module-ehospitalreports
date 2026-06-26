@@ -18,10 +18,24 @@
 	<url>https://wiki.openmrs.org/x/FQ4z</url>
 
 	<scm>
-		<connection>scm:git:git@github.com:openmrs/openmrs-module-ehospitalreports.git</connection>
-		<developerConnection>scm:git:git@github.com:openmrs/openmrs-module-ehospitalreports.git</developerConnection>
-		<url>https://github.com/openmrs/openmrs-module-ehospitalreports/</url>
+		<connection>scm:git:https://github.com/IntelliSOFT-Consulting/openmrs-module-ehospitalreports.git</connection>
+		<developerConnection>scm:git:https://github.com/IntelliSOFT-Consulting/openmrs-module-ehospitalreports.git</developerConnection>
+		<url>https://github.com/IntelliSOFT-Consulting/openmrs-module-ehospitalreports/</url>
+		<tag>HEAD</tag>
 	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>repsys-releases</id>
+			<name>Repsys Maven Releases</name>
+			<url>${repsysReleasesUrl}</url>
+		</repository>
+		<snapshotRepository>
+			<id>repsys-snapshots</id>
+			<name>Repsys Maven Snapshots</name>
+			<url>${repsysSnapshotsUrl}</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<modules>
 		<module>api</module>
@@ -321,5 +335,7 @@
     	<metadatasharingVersion>1.9.0</metadatasharingVersion>
 		<metadatamappingVersion>1.6.0</metadatamappingVersion>
 		<mambaETLCoreVersion>2.0.1-SNAPSHOT</mambaETLCoreVersion>
+		<repsysReleasesUrl>https://repo.repsy.io/intellisoftdev/ehospital/</repsysReleasesUrl>
+		<repsysSnapshotsUrl>https://repo.repsy.io/intellisoftdev/ehospital/</repsysSnapshotsUrl>
 	</properties>
 </project>
